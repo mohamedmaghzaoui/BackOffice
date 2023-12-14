@@ -10,15 +10,13 @@
 
 {% block body %}
 <div class="container-fluid"> <!--begin container-->
-    <style>
 
-    </style>
     <div class="row "><!--begin row to sperate navbar elements-->
         <nav class="navbar navbar-expand-lg col-md-12  " data-bs-theme="dark"> <!--begin navbar-->
             <div class="container-fluid">
                 <!--navbar elements-->
 
-                <a class="navbar-brand fs-3 fw-bold col-5 offset-1" href="./about.html">About<span
+                <a class="navbar-brand fs-3 fw-bold col-5 offset-1" href="/about">About<span
                         class="text-warning">Me</span></a>
                 <!--burger menu-->
                 <button class="navbar-toggler btn-lg   " type="button" data-bs-toggle="collapse"
@@ -30,19 +28,19 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ">
                         <li class="nav-item">
-                            <a class="nav-link active fw-semibold mx-3" aria-current="page" href="index.html">HOME</a>
+                            <a class="nav-link active fw-semibold mx-3" aria-current="page" href="/">HOME</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link fw-semibold mx-3 " href="./about.html">ABOUT</a>
+                            <a class="nav-link fw-semibold mx-3 " href="/about">ABOUT</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fw-semibold mx-3" href="./resume.html">RESUME</a>
+                            <a class="nav-link fw-semibold mx-3" href="/resume">RESUME</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fw-semibold mx-3" href="./project.html">PROJECTS</a>
+                            <a class="nav-link fw-semibold mx-3" href="/project">PROJECTS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fw-semibold mx-3" href="./contact.html">CONTACT</a>
+                            <a class="nav-link fw-semibold mx-3" href="/contact">CONTACT</a>
                         </li>
 
                     </ul>
@@ -76,8 +74,8 @@
                 </div>
                 <br>
                 <!--responsive image-->
-                <div class="col  " style="margin-top: -10%;">
-                    <img src=" photo.png" class="img-fluid my-4   " alt="">
+                <div class="col" style="margin-top: -10%;">
+                    <img src="{{ asset('photo.png') }}" class="img-fluid my-4   " alt="">
                 </div>
 
 
