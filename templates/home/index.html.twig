@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+
+{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('Css/portfolio.css') }}">
+
+{% endblock stylesheets %}
+
+{% block body %}
+<div class="container-fluid"> <!--begin container-->
+    <style>
+
+    </style>
+    <div class="row "><!--begin row to sperate navbar elements-->
+        <nav class="navbar navbar-expand-lg col-md-12  " data-bs-theme="dark"> <!--begin navbar-->
+            <div class="container-fluid">
+                <!--navbar elements-->
+
+                <a class="navbar-brand fs-3 fw-bold col-5 offset-1" href="./about.html">About<span
+                        class="text-warning">Me</span></a>
+                <!--burger menu-->
+                <button class="navbar-toggler btn-lg   " type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class=" navbar-toggler-icon "></span>
+                </button>
+                <!--other links-->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ">
+                        <li class="nav-item">
+                            <a class="nav-link active fw-semibold mx-3" aria-current="page" href="index.html">HOME</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link fw-semibold mx-3 " href="./about.html">ABOUT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold mx-3" href="./resume.html">RESUME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold mx-3" href="./project.html">PROJECTS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold mx-3" href="./contact.html">CONTACT</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div> <!--end row-->
+        </nav> <!--end navbar-->
+        <main class="container-fluid"> <!--begin content-->
+            <div class="row" style="margin-top: 12% ;margin-left:10%;">
+                <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12   "> <!--responsive -->
+                    <p class=" text-warning  fs-3  ">Hello, Welcome</p>
+                    <p class="  text-light fs-1  fw-bold">I m Mohamed Maghzaoui</p>
+                    <!--the id text is for responsive font size-->
+                    <p id="text" class="  fw-medium  "
+                        style="color: #6B7280;font-family: Lexend Deca;font-style: normal;">
+
+                        As an aspiring future Full Stack Engineer
+                        <br>
+                        I am passionate about crafting seamless
+                        <br>
+                        digital experiences and projects
+
+                    </p>
+                    <!--contact button-->
+                    <button type="button" class="btn btn-warning   fw-medium btn-lg  "><a href="./contact.html"
+                            class="nav-link">Contact
+                            Me</a></button>
+
+
+
+
+                </div>
+                <br>
+                <!--responsive image-->
+                <div class="col  " style="margin-top: -10%;">
+                    <img src=" photo.png" class="img-fluid my-4   " alt="">
+                </div>
+
+
+
+            </div>
+        </main> <!--end content-->
+
+
+    </div> <!--end row -->
+</div><!--end container-->
+
+
+{% endblock %}

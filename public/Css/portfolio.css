@@ -1,0 +1,23 @@
+body {
+    background: #111827;
+  }
+  .navbar {
+    background: #020617;
+  }
+  
+  .resume {
+    border-radius: 12px;
+    background: #020617;
+  }
+  /* text id   for responsive font size*/
+  #text {
+    font-size: 22px;
+  }
+  
+  @media (max-width: 500px) {
+    #text {
+      font-size: 13px;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+  }
