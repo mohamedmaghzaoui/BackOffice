@@ -1,7 +1,236 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello ResumeController!{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('Css/portfolio.css') }}">
+
+{% endblock stylesheets %}
 
 {% block body %}
+<div class="container-fluid"> <!--begin container-->
+    <div class="row"><!--begin row to sperate navbar elements-->
+        <nav class="navbar navbar-expand-lg " data-bs-theme="dark"> <!--begin navbar-->
+            <div class="container-fluid">
+                <!--navbar element-->
+                <a class="navbar-brand fs-2 fw-bold col-5 offset-1" href="about.html">About<span
+                        class="text-warning">Me</span></a>
+                <!--burger menu-->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!--other elements-->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ">
+                        <li class="nav-item">
+                            <a class="nav-link  fw-semibold mx-3" aria-current="page" href="/">HOME</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link  fw-semibold mx-3" href="/about">ABOUT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active fw-semibold mx-3"
+                                href="./resume.html">RESUME</a><!--active for current page-->
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold mx-3" href="/project">PROJECTS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold mx-3" href="/contact">CONTACT</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div> <!--end row-->
+        </nav> <!--end navbar-->
+        <main class="container"> <!--begin content-->
+            <div style="margin-top: 5% ;margin-left:10%;"><!--begin resume-->
+                <!--begin education sector-->
+                <p class="fs-1 text-light fw-bold">My <span class="text-warning">Education</span></p>
+
+                <div class="row"><!--row to seperate elements-->
+                    <!--first education element  using a custom class named resume using css-->
+                    <div class=" resume col-xl-5 col-lg-5 col-md-11 col-sm-11 col-11" style="height:80%">
+                        <!--responsive-->
+                        <!--icon-->
+                        <i style="margin-left: 40%;margin-top:5%;margin-bottom:10%"
+                            class="fas fa-school bg-warning fa-3x  img-fluid  "></i>
+                        <!--date-->
+                        <p class=" fs-4 text-center fw-medium" style="color: #D1D5DB;font-family: Lexend Deca;">
+                            september 2021
+                            -
+                            2022</p>
+                        <p style="margin-left: 30%;" class="fs-3 fw-bold text-warning">Baccelaurat</p>
+                        <p style="margin-left: 10%;" class="fs-4  fw-bold text-light">Abouloubaba</p>
+                        <!--text id for responsive font size-->
+                        <p id="text" class="mx-3 fw-medium "
+                            style="color: #6B7280 ;font-family: Lexend Deca;font-style: normal;">
+                            I successfully completed my Math Baccalaureate in
+                            Abouloubaba School.
+                            This achievement has laid a strong foundation for my
+                            academic journey and future endeavors.
+                        </p>
+                        <br>
+
+
+
+                        <p class="text-end text-light fs-4">Gabes,Tunisia </p>
+
+                    </div> <!--end first education element-->
+                    <br>
+                    <!--begin second education element-->
+                    <!--responsive div-->
+                    <div class="resume  col-xl-5 my-xl-0 my-lg-0 my-md-4 my-sm-4 my-4   offset-xl-1 offset-lg-1 col-lg-5 col-md-11 col-sm-11 col-11"
+                        style="height:80%">
+                        <!--icon-->
+                        <i style="margin-left: 40%;margin-top:5%;margin-bottom:10%"
+                            class="fas fa-graduation-cap bg-warning fa-3x  img-fluid  "></i>
+                        <!--date-->
+                        <p class="fs-4 text-center fw-medium" style="color: #D1D5DB;font-family: Lexend Deca;">
+                            october 2022
+                            -
+                            2025</p>
+                        <!--margin to space elements-->
+                        <p style="margin-left: 30%;" class="fs-3 fw-bold text-warning">Bachelor </p>
+                        <p style="margin-left: 10%;" class="fs-4  fw-bold text-light">Ecole Hexagone</p>
+                        <!--text id  for responsive font size-->
+                        <p id="text" class=" mx-3  fw-medium "
+                            style="color: #6B7280 ;font-family: Lexend Deca;font-style: normal;">
+                            I'm currently in my second year of a Bachelor's degree program at Hexagone School in
+                            Versailles
+
+                            and I am excited about the opportunities and knowledge
+
+                            this academic journey will bring.
+                        </p>
+                        <p class="text-end text-light fs-4">Versailles,France </p>
+                    </div> <!--end second education element-->
+
+                </div><!--end education sector-->
+                <br><br>
+                <!--begin experiences and skills sector-->
+                <div class="row">
+                    <!--experience-->
+                    <div class="col-xl-5 col-lg-5 col-md-11 col-sm-11 col-11"> <!--responsive-->
+                        <p class="fs-1 text-light fw-bold">My <span class="text-warning">Experiences</span></p>
+
+                        <div class="resume " style="width: 103%"> <!--needed to add a little withd -->
+                            <!--icon-->
+                            <i style="margin-left: 40%;margin-top:5%;margin-bottom:10%"
+                                class="  fas fa-laptop-code bg-warning fa-3x  img-fluid  "></i>
+                            <!--date-->
+                            <p class="fs-4 text-center fw-medium" style="color: #D1D5DB;font-family: Lexend Deca;">
+                                Aout 2023
+                                -
+                                Sebtember 2023</p>
+                            <p class="text-center w-100  fs-3 fw-bold text-warning">Full stack developper</p>
+                            <p style="margin-left: 10%;" class="fs-4  fw-bold text-light">Sharing
+                                technologies</p>
+                            <!--text id for responsive font size-->
+                            <p id="text" class=" mx-4 fw-medium "
+                                style="color: #6B7280 ;font-family: Lexend Deca;font-style: normal;">
+                                As a Full Stack Developer at Sharing Technologies,
+
+                                I contributed to real-world projects, developing
+
+                                solutions with a diverse set of technologies and
+
+                                gaining valuable hands-on experience
+                            </p>
+
+                            <p style="margin-right: 2%;" class="text-end text-light fs-4">Gabes,Tunisia </p>
+                            <br>
+                        </div>
+
+                    </div><!--end experience-->
+                    <!--begin skills-->
+                    <div
+                        class="col-xl-5 my-xl-0 my-lg-0 my-md-4 my-sm-4 my-4   offset-xl-1 offset-lg-1 col-lg-5 col-md-11 col-sm-11 col-11">
+                        <!--responsive-->
+
+                        <p class="fs-1 text-light fw-bold">My <span class="text-warning">Skills</span></p>
+                        <!--first skill-->
+                        <span class="text-light fs-5 ">HTML</span>
+                        <div class="progress bg-dark bg-gradient" role="progressbar"
+                            aria-label="Warning striped example" aria-valuenow="75" aria-valuemin="0"
+                            aria-valuemax="100">
+                            <div class="progress-bar progress-bar-striped bg-warning" style="width: 85%"><span
+                                    class="fs-6 fw-bold">85%</span></div>
+                        </div>
+                        <br>
+                        <!--second skill-->
+                        <span class="text-light fs-5">CSS</span>
+                        <div class="progress bg-dark bg-gradient" role="progressbar"
+                            aria-label="Warning striped example" aria-valuenow="75" aria-valuemin="0"
+                            aria-valuemax="100">
+                            <div class="progress-bar progress-bar-striped bg-warning" style="width: 75%"><span
+                                    class="fs-6 fw-bold">75%</span></div>
+                        </div>
+                        <br>
+                        <!--3rd skill-->
+                        <span class="text-light fs-5">React Js</span>
+                        <div class="progress bg-dark bg-gradient" role="progressbar"
+                            aria-label="Warning striped example" aria-valuenow="75" aria-valuemin="0"
+                            aria-valuemax="100">
+                            <div class="progress-bar progress-bar-striped bg-warning" style="width: 80%"><span
+                                    class="fs-6 fw-bold">80%</span></div>
+                        </div>
+                        <br>
+                        <!--4th skill-->
+                        <span class="text-light fs-5">PHP</span>
+                        <div class="progress bg-dark bg-gradient" role="progressbar"
+                            aria-label="Warning striped example" aria-valuenow="75" aria-valuemin="0"
+                            aria-valuemax="100">
+                            <div class="progress-bar progress-bar-striped bg-warning" style="width: 65%"><span
+                                    class="fs-6 fw-bold">65%</span></div>
+                        </div>
+                        <br>
+                        <!--5th skill-->
+                        <span class="text-light fs-5">Node js</span>
+                        <div class="progress bg-dark bg-gradient" role="progressbar"
+                            aria-label="Warning striped example" aria-valuenow="75" aria-valuemin="0"
+                            aria-valuemax="100">
+                            <div class="progress-bar progress-bar-striped bg-warning" style="width: 85%"><span
+                                    class="fs-6 fw-bold">85%</span></div>
+                        </div>
+                        <br>
+                        <!--6th skill-->
+                        <span class="text-light fs-5">MYSQL</span>
+                        <div class="progress bg-dark bg-gradient" role="progressbar"
+                            aria-label="Warning striped example" aria-valuenow="75" aria-valuemin="0"
+                            aria-valuemax="100">
+                            <div class="progress-bar progress-bar-striped bg-warning" style="width: 60%"><span
+                                    class="fs-6 fw-bold ">60%</span></div>
+                        </div>
+                        <br>
+                        <!--7th skill-->
+                        <span class="text-light fs-5">Bootstrap</span>
+                        <div class="progress bg-dark bg-gradient" role="progressbar"
+                            aria-label="Warning striped example" aria-valuenow="75" aria-valuemin="0"
+                            aria-valuemax="100">
+                            <div class="progress-bar progress-bar-striped bg-warning" style="width: 90%"><span
+                                    class="fs-6 fw-bold">90%</span></div>
+                        </div>
+                        <br>
+                        <!--8th skill-->
+                        <span class="text-light fs-5">Python</span>
+                        <div class="progress bg-dark bg-gradient" role="progressbar"
+                            aria-label="Warning striped example" aria-valuenow="75" aria-valuemin="0"
+                            aria-valuemax="100">
+                            <div class="progress-bar progress-bar-striped bg-warning" style="width: 85%"><span
+                                    class="fs-6 fw-bold">70%</span></div>
+                        </div>
+                        <br>
+
+                    </div> <!--end skills-->
+
+                </div> <!--end row-->
+
+            </div> <!--end experience and skills sector-->
+    </div>
+    </main> <!--end content-->
+
+
+</div>
 
 {% endblock %}

@@ -1,0 +1,53 @@
+body {
+    background: #020617;
+  }
+  /* custom placeholder class*/
+  .form-control::placeholder {
+    color: #f3f4f6;
+    font-family: Lexend Deca;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 41px;
+  }
+  /*text id and text 2 class for responsive font size */
+  #text {
+    font-size: 22px;
+  }
+  .text2 {
+    font-size: 17px;
+  }
+  /* name id to change height*/
+  #name {
+    height: 63px;
+  }
+  /* link id for custom style*/
+  #link {
+    text-decoration: none;
+    color: white;
+  }
+  /* hover effect and pointer curson*/
+  #link:hover {
+    color: #ffc107;
+  }
+  img {
+    cursor: pointer;
+  }
+  .hover:hover {
+    background-color: #ffc107; /* Bootstrap "warning" color */
+  
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  @media (max-width: 500px) {
+    #text {
+      font-size: 14px;
+      white-space: normal;
+      overflow-wrap: break-word;
+    }
+    .text2 {
+      font-size: 10px;
+    }
+    #name {
+      height: 45px;
+    }
+  }
