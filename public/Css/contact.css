@@ -17,7 +17,7 @@ body {
     font-size: 17px;
   }
   /* name id to change height*/
-  #name {
+  .name {
     height: 63px;
   }
   /* link id for custom style*/
@@ -47,7 +47,7 @@ body {
     .text2 {
       font-size: 10px;
     }
-    #name {
+    .name {
       height: 45px;
     }
   }

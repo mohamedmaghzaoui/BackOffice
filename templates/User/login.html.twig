@@ -8,19 +8,26 @@
 
 {% endblock stylesheets %}
 {% endif %}
-<div class="offset-3 my-5 col-xl-5 col-lg-5 col-sm-8 col-md-9 col-10 "><!--form sector-->
+<div style="margin-top: 10%;" class="offset-4 col-xl-5 col-lg-5 col-sm-8 col-md-9 col-10  "><!--form sector-->
     <form method="post" id="contactForm">
         <!--action="http://localhost:3000/send-mail" and method ="post"  this will only be added in localhost for sending mail -->
         <!--name id to change height-->
-        <input id="name" type="text" placeholder="Name" value="{{lastUsername}}" name="_username"
-            class="form-control text-light fw-bold border-0" style="background: #1F2937 ;width:70%">
+        <input type="text" placeholder="Name" value="{{lastUsername}}" name="_username"
+            class="form-control text-light fw-bold border-0 name" style="background: #1F2937 ;width:70%">
         <br>
-        <input id="name" type="password" placeholder="Password" name="_password"
-            class="form-control text-light fw-bold border-0" style="background: #1F2937 ;width:70%">
+        <input type="password" placeholder="Password" name="_password"
+            class=" form-control text-light fw-bold border-0 name" style="background: #1F2937 ;width:70%">
         <br>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <p class="fs-2" style="color: #D1D5DB ;font-family: Lexend Deca;font-style: normal;">{{app.user.username}}</p>
-        <a href="logout" type="submit" class="btn btn-warning  fw-medium btn-lg my-xl-0 my-lg-0 my-4 ">Logout</a>
+        <p class="fs-2 mx-4 " style="color: #D1D5DB ;font-family: Lexend Deca;font-style: normal;"> you re logged
+            in{{app.user.username}}
+        </p>
+        <a href="logout" type="submit" class="mx-3 btn btn-warning  fw-medium btn-lg my-xl-0 my-lg-0 my-4 ">Logout</a>
+        <a href="addskill" type="submit"
+            class="mx-3 btn btn-outline-warning  fw-medium btn-lg my-xl-0 my-lg-0 my-4 ">Add a
+            skill</a>
+        <a href="" type="submit" class="btn btn-outline-warning  fw-medium btn-lg my-xl-0 my-lg-0 my-4 ">Add a
+            project</a>
         {% else %}
         <button onclick="submitForm(event)" type="submit"
             class="btn btn-warning  fw-medium btn-lg my-xl-0 my-lg-0 my-4 ">Login</button>
