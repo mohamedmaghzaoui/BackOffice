@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('Css/portfolio.css') }}">
+
+{% endblock stylesheets %}
+{% block body%}
+
+
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+<div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5">
+
+    {{form_start(form,{"attr":{"novalidate":"novalidate"}}) }}
+    {{form_row(form.name)}}
+
+    {{form_row(form.mastery)}}
+
+    <button class="btn btn-primary" type="submit">Add</button>
+
+    {{form_end(form)}}
+</div>
+{% else %}
+<p class="fs-2 text-warning offset-3 my-5"> you need to login for this content</p>
+<a href="/login" class="btn btn-warning">Login</a>
+
+{% endif %}
+
+
+
+
+{% endblock body %}

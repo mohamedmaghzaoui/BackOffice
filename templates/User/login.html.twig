@@ -18,11 +18,19 @@
         <input id="name" type="password" placeholder="Password" name="_password"
             class="form-control text-light fw-bold border-0" style="background: #1F2937 ;width:70%">
         <br>
-
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <p class="fs-2" style="color: #D1D5DB ;font-family: Lexend Deca;font-style: normal;">{{app.user.username}}</p>
+        <a href="logout" type="submit" class="btn btn-warning  fw-medium btn-lg my-xl-0 my-lg-0 my-4 ">Logout</a>
+        {% else %}
         <button onclick="submitForm(event)" type="submit"
             class="btn btn-warning  fw-medium btn-lg my-xl-0 my-lg-0 my-4 ">Login</button>
 
+        {% endif %}
+
+
+
     </form>
+
 </div><!--end form sector-->
 
 
