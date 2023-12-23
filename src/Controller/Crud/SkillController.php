@@ -36,11 +36,16 @@ class SkillController extends AbstractController
 
                 # code...
             }
+            //read skills 
+            $repository = $doctrine->getRepository(Skill::class);
+            $skills = $repository->findAll();
 
 
             return $this->render('crud/addSkill.html.twig', [
 
-                "form" => $form->createView()
+                "form" => $form->createView(),
+                'skills' => $skills,
+
 
             ]);
         }

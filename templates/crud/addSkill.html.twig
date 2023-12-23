@@ -6,10 +6,46 @@
 {% endblock stylesheets %}
 
 {% block body %}
+<!--check if the user is authenticated to display content-->
 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-<div class="text-light offset-3 my-5 col-xl-5 col-lg-5 col-sm-8 col-md-9 col-10 ">
+<!--navbar-->
+<nav class="navbar navbar-expand-lg " data-bs-theme="dark"> <!--begin navbar-->
+    <div class="container-fluid">
+        <!--navbar elements-->
+
+        <a class="navbar-brand fs-2 fw-bold col-5 offset-1" href="/about">About<span class="text-warning">Me</span></a>
+        <!--burger menu-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--other elements-->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ">
+                <li class="nav-item">
+                    <a class="nav-link  fw-semibold mx-3" aria-current="page" href="/addskill">SKILLS</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link fw-semibold mx-3" href="/about">PROJECTS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-warning mx-5" href="/">HOME</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="btn btn-outline-danger mx-5" href="/logout">LOGOUT</a>
+                </li>
+
+
+            </ul>
+        </div>
+    </div> <!--end row-->
+</nav> <!--end navbar-->
+<!-- skill content-->
+<div class="text-light offset-xl-3 offset-1 my-5 col-xl-5 col-lg-5 col-sm-8 col-md-9 col-10 ">
+    <!--begin skill form-->
     <p class="fs-2">Add a new skill</p>
-    {{ form_start(form, {"attr": {"novalidate": "novalidate"}}) }}
+    {{form_start(form) }}
 
     <div class="mb-3 ">
         {{ form_label(form.name) }}
@@ -27,7 +63,41 @@
     <button class="btn btn-outline-warning" type="submit">Add a skill</button>
 
     {{ form_end(form) }}
+    <!--end skill form-->
+    <br>
+    <!--begin skill list-->
+    <table style="background-color: #111827; border-radius: 12px;" class=" fw-medium text-light col-12">
+
+        <thead>
+            <tr>
+                <th class="px-xl-3" scope="col">Name</th>
+                <th class="px-xl-5" scope="col">Mastery</th>
+                <th class="px-xl-5 px-3 " scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for skill in skills %}
+            <tr>
+                <td class="px-xl-3">{{ skill.name }}</td>
+                <td class="px-xl-5 ">{{ skill.mastery }}%</td>
+                <td class="px-xl-3 px-2">
+                    <a class="btn btn-outline-primary my-xl-1 my-2">modify</a>
+                    <a class="btn btn-outline-danger">delete</a>
+                </td>
+
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!--end skill form-->
+
+
+
+
 </div>
+<!--if user is not authenticated-->
+
 {% else %}
 <p class="fs-2 text-warning offset-3 my-5">You need to login for this content</p>
 <a href="/login" class="btn btn-warning">Login</a>

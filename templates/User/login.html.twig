@@ -8,7 +8,46 @@
 
 {% endblock stylesheets %}
 {% endif %}
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+<nav class="navbar navbar-expand-lg " data-bs-theme="dark"> <!--begin navbar-->
+    <div class="container-fluid">
+        <!--navbar elements-->
+
+        <a class="navbar-brand fs-2 fw-bold col-5 offset-1" href="/about">About<span class="text-warning">Me</span></a>
+        <!--burger menu-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--other elements-->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ">
+                <li class="nav-item">
+                    <a class="nav-link  fw-semibold mx-3" aria-current="page" href="/addskill">SKILLS</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link fw-semibold mx-3" href="/about">PROJECTS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-warning mx-5" href="/">HOME</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="btn btn-outline-danger mx-5" href="/logout">LOGOUT</a>
+                </li>
+
+
+            </ul>
+        </div>
+    </div> <!--end row-->
+</nav> <!--end navbar-->
+
+
+
+{% endif %}
+
 <div style="margin-top: 10%;" class="offset-4 col-xl-5 col-lg-5 col-sm-8 col-md-9 col-10  "><!--form sector-->
+
     <form method="post" id="contactForm">
         <!--action="http://localhost:3000/send-mail" and method ="post"  this will only be added in localhost for sending mail -->
         <!--name id to change height-->
@@ -20,11 +59,10 @@
         <br>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <p class="fs-2 mx-4 " style="color: #D1D5DB ;font-family: Lexend Deca;font-style: normal;"> you re logged
-            in{{app.user.username}}
+            in {{app.user.username}}
         </p>
-        <a href="logout" type="submit" class="mx-3 btn btn-warning  fw-medium btn-lg my-xl-0 my-lg-0 my-4 ">Logout</a>
         <a href="addskill" type="submit"
-            class="mx-3 btn btn-outline-warning  fw-medium btn-lg my-xl-0 my-lg-0 my-4 ">Add a
+            class="mx-5 btn btn-outline-warning  fw-medium btn-lg my-xl-0 my-lg-0 my-4 ">Add a
             skill</a>
         <a href="" type="submit" class="btn btn-outline-warning  fw-medium btn-lg my-xl-0 my-lg-0 my-4 ">Add a
             project</a>
