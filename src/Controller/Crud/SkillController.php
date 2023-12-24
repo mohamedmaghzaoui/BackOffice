@@ -50,24 +50,27 @@ class SkillController extends AbstractController
             ]);
         }
     }
-    //delte a project
-    /*
-    #[Route("/delete/{id}", name: "delete_project")]
+    //delte a skill
 
-    public function delete(ManagerRegistry $doctrine, $id): Response
+    #[Route("/delete/{id}", name: "delete_skill")]
+
+    public function delete(ManagerRegistry $doctrine, Skill $skill): Response
     {
         $entityManager = $doctrine->getManager();
-        $project = $entityManager->getRepository(Project::class)->find($id);
 
-        if (!$project) {
-            return $this->redirectToRoute('homepage');
+
+        if (!$skill) {
+            return $this->redirectToRoute('addskill');
         }
+        $entityManager->remove($skill);
 
-        $entityManager->remove($project);
+
         $entityManager->flush();
 
-        return $this->redirectToRoute('homepage'); // Redirect to the homepage or any other route
+        return $this->redirectToRoute('addskill'); // Redirect to the homepage or any other route
     }
+
+    /*
     //edit project
     #[Route("/edit/{id}", name: "edit_project")]
     public function edit(Request $request, ManagerRegistry $doctrine, Project $project): Response

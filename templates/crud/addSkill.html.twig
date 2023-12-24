@@ -70,7 +70,7 @@
 
         <thead>
             <tr>
-                <th class="px-xl-3" scope="col">Name</th>
+                <th class="px-xl-3 " scope="col">Name</th>
                 <th class="px-xl-5" scope="col">Mastery</th>
                 <th class="px-xl-5 px-3 " scope="col">Options</th>
             </tr>
@@ -80,13 +80,22 @@
             <tr>
                 <td class="px-xl-3">{{ skill.name }}</td>
                 <td class="px-xl-5 ">{{ skill.mastery }}%</td>
-                <td class="px-xl-3 px-2">
-                    <a class="btn btn-outline-primary my-xl-1 my-2">modify</a>
-                    <a class="btn btn-outline-danger">delete</a>
+                <td class="  px-2">
+                    <a class="btn btn-outline-primary my-2 w-100">modify</a>
+                    <a class="btn btn-outline-danger my-2 w-100"
+                        href="{{ path('delete_skill', {'id': skill.id}) }}">delete</a>
+
                 </td>
 
 
+
             </tr>
+            <tr>
+                <td colspan="3">
+                    <hr>
+                </td>
+            </tr>
+
             {% endfor %}
         </tbody>
     </table>
