@@ -41,7 +41,7 @@ class SkillController extends AbstractController
             $skills = $repository->findAll();
 
 
-            return $this->render('crud/addSkill.html.twig', [
+            return $this->render('crud/Skill/addSkill.html.twig', [
 
                 "form" => $form->createView(),
                 'skills' => $skills,
@@ -52,51 +52,68 @@ class SkillController extends AbstractController
     }
     //delte a skill
 
-    #[Route("/delete/{id}", name: "delete_skill")]
+    #[Route("/delete/skill/{id}", name: "delete_skill")]
 
-    public function delete(ManagerRegistry $doctrine, Skill $skill): Response
+    public function delete(ManagerRegistry $doctrine, $id): Response
     {
-        $entityManager = $doctrine->getManager();
+        //check if user is authenticated
+        $isAuthenticated = $this->isGranted("IS_AUTHENTICATED_FULLY");
 
+        if (!$isAuthenticated) {
 
-        if (!$skill) {
-            return $this->redirectToRoute('addskill');
-        }
-        $entityManager->remove($skill);
-
-
-        $entityManager->flush();
-
-        return $this->redirectToRoute('addskill'); // Redirect to the homepage or any other route
-    }
-
-    /*
-    //edit project
-    #[Route("/edit/{id}", name: "edit_project")]
-    public function edit(Request $request, ManagerRegistry $doctrine, Project $project): Response
-    {
-        $form = $this->createForm(ProjectType::class, $project);
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+            // Redirect to home page
+            return $this->redirectToRoute('home');
+        } else {
             $entityManager = $doctrine->getManager();
-            $entityManager->flush();
-            return $this->redirectToRoute('homepage');
+            $skill = $entityManager->getRepository(Skill::class)->find($id);
 
 
-            # code...
+            //check if skill exist
+            if (!$skill) {
+                return $this->redirectToRoute('addskill');
+            } else {
+
+                $entityManager->remove($skill);
+
+
+                $entityManager->flush();
+
+                return $this->redirectToRoute('addskill'); // Redirect to the homepage or any other route   
+            }
         }
-        return $this->render('project/projectEdit.html.twig', [
-            "form" => $form->createView()
-        ]);
     }
-    //read project
-    #[Route("/read/{id}", name: "read_project")]
-    public function read(ManagerRegistry $doctrine, Project $project): Response
+
+
+
+
+    //edit skill
+    #[Route("/edit/skill/{id}", name: "edit_skill")]
+    public function edit(Request $request, ManagerRegistry $doctrine, Skill $skill): Response
     {
-        return $this->render("project/projectRead.html.twig", [
-            'project' => $project
-        ]);
+        //check if user is authenticated
+        $isAuthenticated = $this->isGranted("IS_AUTHENTICATED_FULLY");
+        if (!$isAuthenticated) {
+            //redirect to home page
+            return $this->redirectToRoute("home");
+            # code...
+        } else {
+            //create edit form
+
+            $form = $this->createForm(SkillType::class, $skill);
+
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $entityManager = $doctrine->getManager();
+                $entityManager->flush();
+                return $this->redirectToRoute('addskill');
+
+
+                # code...
+            }
+            //return edit template
+            return $this->render('Crud/Skill/editSkill.html.twig', [
+                "form" => $form->createView()
+            ]);
+        }
     }
-    */
 }

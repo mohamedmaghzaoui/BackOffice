@@ -5,8 +5,7 @@ namespace App\Entity;
 use App\Repository\SkillRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
-
+use Symfony\Component\Validator\Constraints\Range;
 
 #[ORM\Entity(repositoryClass: SkillRepository::class)]
 class Skill
@@ -27,6 +26,13 @@ class Skill
 
     #[ORM\Column]
     #[Assert\NotBlank(message: "mastery cannot be empty")]
+    #[Range(
+        min: 0,
+        max: 100,
+        notInRangeMessage: "mastery must be a number between 0 and 100"
+    )]
+
+
     private ?int $mastery = null;
 
     public function getId(): ?int
