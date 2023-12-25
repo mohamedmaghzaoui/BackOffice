@@ -44,7 +44,7 @@
 <!-- skill content-->
 <div class="text-light offset-xl-3 offset-1 my-5 col-xl-5 col-lg-5 col-sm-8 col-md-9 col-10 ">
     <!--begin skill form-->
-    <p class="fs-2">Add a new skill</p>
+    <p class="fs-2">Add a new project</p>
     {{form_start(form,{"attr":{"novalidate":"novalidate"}}) }}
 
     <div class="mb-3 ">
@@ -56,37 +56,47 @@
     </div>
 
     <div class="mb-3">
-        {{ form_label(form.mastery) }}
-        {{ form_widget(form.mastery, {'attr': {'class': 'name form-control text-light fw-bold border-0', 'style':
+        {{ form_label(form.description) }}
+        {{ form_widget(form.description, {'attr': {'class': 'name form-control text-light fw-bold border-0', 'style':
         'background: #1F2937; width:70%' }}) }}
-        {{form_errors(form.mastery)}}
+        {{form_errors(form.description)}}
+    </div>
+    <div class="mb-3">
+        {{ form_label(form.image) }}
+        {{ form_widget(form.image, {'attr': {'class': 'name form-control text-light fw-bold border-0', 'style':
+        'background: #1F2937; width:70%' }}) }}
+        {{form_errors(form.image)}}
     </div>
 
-    <button class="btn btn-outline-warning" type="submit">Add a skill</button>
+    <button class="btn btn-outline-warning" type="submit">Add a project</button>
 
     {{ form_end(form) }}
-    <!--end skill form-->
+    <!--end project form-->
     <br>
-    <!--begin skill list-->
+    <!--begin project list-->
     <table style="background-color: #111827; border-radius: 12px;" class=" fw-medium text-light col-12">
 
         <thead>
             <tr>
                 <th class="px-xl-3 " scope="col">Name</th>
-                <th class="px-xl-5" scope="col">Mastery</th>
-                <th class="px-xl-5 px-3 " scope="col">Options</th>
+
+                <th class="px-xl-5 px-3 " scope="col">Image</th>
+                <th class="px-xl-5 px-3 " scope="col">Option</th>
             </tr>
         </thead>
         <tbody>
-            {% for skill in skills %}
+            {% for project in projects %}
             <tr>
-                <td class="px-xl-3">{{ skill.name }}</td>
-                <td class="px-xl-5 ">{{ skill.mastery }}%</td>
-                <td class="  px-2">
-                    <a href="{{ path('edit_skill', {'id': skill.id}) }}" class=" btn btn-outline-primary my-2
+                <td class="px-xl-3">{{ project.name }}</td>
+
+                <td class="px-xl-5  "> <img class="img-fluid" src="{{ asset('uploads/' ~ project.image) }}"
+                        alt="{{ project.name }} image">
+                </td>
+                <td class="px-2">
+                    <a href="" class=" btn btn-outline-primary my-2
                         w-100">modify</a>
-                    <a class="btn btn-outline-danger my-2 w-100"
-                        href="{{ path('delete_skill', {'id': skill.id}) }}">delete</a>
+                    <a href="{{ path('delete_project', {'id': project.id}) }}"
+                        class="btn btn-outline-danger my-2 w-100">delete</a>
 
                 </td>
 
@@ -94,7 +104,7 @@
 
             </tr>
             <tr>
-                <td colspan="3">
+                <td colspan=" 4">
                     <hr>
                 </td>
             </tr>
@@ -102,7 +112,7 @@
             {% endfor %}
         </tbody>
     </table>
-    <!--end skill form-->
+    <!--end project form-->
 
 
 
