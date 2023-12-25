@@ -26,9 +26,11 @@ class ProjectController extends AbstractController
             $project = new Project();
             $form = $this->createForm(ProjectType::class, $project);
             $form->handleRequest($request);
+
             if ($form->isSubmitted() && $form->isValid()) {
+
                 //upload image
-                $image = $form['image']->getData();
+                $image = $form->get('image')->getData();
 
                 if ($image) {
                     $imageName = md5(uniqid()) . '.' . $image->guessExtension();
@@ -38,6 +40,7 @@ class ProjectController extends AbstractController
                     );
                     $project->setImage($imageName);
                 }
+
                 $entityManager = $doctrine->getManager();
                 $entityManager->persist($project);
                 $entityManager->flush();
@@ -100,11 +103,11 @@ class ProjectController extends AbstractController
     }
 
 
-    /*
+
 
     //edit project
     #[Route("/edit/project/{id}", name: "edit_project")]
-    public function edit(Request $request, ManagerRegistry $doctrine, project $project): Response
+    public function edit(Filesystem $filesystem, Request $request, ManagerRegistry $doctrine, project $project): Response
     {
         //check if user is authenticated
         $isAuthenticated = $this->isGranted("IS_AUTHENTICATED_FULLY");
@@ -119,12 +122,27 @@ class ProjectController extends AbstractController
 
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
+                //get submitted image
+                $newImage = $form->get('image')->getData();
+                if ($newImage) {
+                    // Remove the old image file
+                    $imagePath = $this->getParameter('upload_directory') . '/' . $project->getImage();
+                    if ($filesystem->exists($imagePath)) {
+                        $filesystem->remove($imagePath);
+                    }
+
+                    // Upload the new image
+                    $imageName = md5(uniqid()) . '.' . $newImage->guessExtension();
+                    $newImage->move(
+                        $this->getParameter('upload_directory'),
+                        $imageName
+                    );
+                    $project->setImage($imageName);
+                }
+                //update database with edited data
                 $entityManager = $doctrine->getManager();
                 $entityManager->flush();
                 return $this->redirectToRoute('addproject');
-
-
-                # code...
             }
             //return edit template
             return $this->render('Crud/project/editproject.html.twig', [
@@ -132,5 +150,4 @@ class ProjectController extends AbstractController
             ]);
         }
     }
-    */
 }

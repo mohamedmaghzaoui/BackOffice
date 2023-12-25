@@ -23,7 +23,8 @@ class Project
     //image
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: "image cannot be empty")]
+
+
     private ?string $image = null;
     //description
 

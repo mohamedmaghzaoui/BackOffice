@@ -44,7 +44,7 @@
 <!-- skill content-->
 <div class="text-light offset-xl-3 offset-1 my-5 col-xl-5 col-lg-5 col-sm-8 col-md-9 col-10 ">
     <!--begin skill form-->
-    <p class="fs-2">Add a new project</p>
+    <p class="fs-2">edit a project</p>
     {{form_start(form) }}
 
     <div class="mb-3 ">
@@ -68,52 +68,11 @@
         {{form_errors(form.image)}}
     </div>
 
-    <button class="btn btn-outline-warning" type="submit">Add a project</button>
+    <button class="btn btn-outline-warning" type="submit">modify</button>
 
     {{ form_end(form) }}
     <!--end project form-->
     <br>
-    <!--begin project list-->
-    <table style="background-color: #111827; border-radius: 12px;" class=" fw-medium text-light col-12">
-
-        <thead>
-            <tr>
-                <th class="px-xl-3 " scope="col">Name</th>
-
-                <th class="px-xl-5 px-3 " scope="col">Image</th>
-                <th class="px-xl-5 px-3 " scope="col">Option</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for project in projects %}
-            <tr>
-                <td class="px-xl-3">{{ project.name }}</td>
-
-                <td class="px-xl-5  "> <img class="img-fluid col-12" src="{{ asset('uploads/' ~ project.image) }}"
-                        alt="{{ project.name }} image">
-                </td>
-                <td class="px-2">
-                    <a href="{{ path('edit_project', {'id': project.id}) }}" class=" btn btn-outline-primary my-2
-                        w-100">modify</a>
-                    <a href="{{ path('delete_project', {'id': project.id}) }}"
-                        class="btn btn-outline-danger my-2 w-100">delete</a>
-
-                </td>
-
-
-
-            </tr>
-            <tr>
-                <td colspan=" 4">
-                    <hr>
-                </td>
-            </tr>
-
-            {% endfor %}
-        </tbody>
-    </table>
-    <!--end project form-->
-
 
 
 
