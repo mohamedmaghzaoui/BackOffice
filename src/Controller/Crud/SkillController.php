@@ -3,6 +3,7 @@
 namespace App\Controller\Crud;
 
 use App\Entity\Skill;
+use App\Form\SearchSkillType;
 use App\Form\SkillType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,11 +25,15 @@ class SkillController extends AbstractController
             // Redirect to another route if needed
             return $this->redirectToRoute('home');
         } else {
-            //Create a new skill
+
+
+            //skill form
             $skill = new Skill();
-            $form = $this->createForm(SkillType::class, $skill);
-            $form->handleRequest($request);
-            if ($form->isSubmitted() && $form->isValid()) {
+            $skillForm = $this->createForm(SkillType::class, $skill);
+            $skillForm->handleRequest($request);
+
+
+            if ($skillForm->isSubmitted() && $skillForm->isValid()) {
                 $entityManager = $doctrine->getManager();
                 $entityManager->persist($skill);
                 $entityManager->flush();
@@ -38,13 +43,32 @@ class SkillController extends AbstractController
             }
             //read skills 
             $repository = $doctrine->getRepository(Skill::class);
-            $skills = $repository->findAll();
+            $skills = [];
+
+
+            //seachskill form
+            $searchForm = $this->createForm(SearchSkillType::class);
+            $searchForm->handleRequest($request);
+            // ...
+
+            if ($searchForm->isSubmitted() && $searchForm->isValid()) {
+                $searchTerm = $searchForm->get('searchTerm')->getData();
+                if (empty($searchTerm)) {
+                    $skills = $repository->findAll();
+                } else {
+                    $skills = $repository->findBySearchTerm($searchTerm);
+                }
+            }
+
+            // ...
+
 
 
             return $this->render('crud/Skill/addSkill.html.twig', [
 
-                "form" => $form->createView(),
+                "skillForm" => $skillForm->createView(),
                 'skills' => $skills,
+                "searchForm" => $searchForm
 
 
             ]);
