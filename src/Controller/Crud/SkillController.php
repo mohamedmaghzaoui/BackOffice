@@ -38,10 +38,9 @@ class SkillController extends AbstractController
 
                 # code...
             }
-            //read skills 
+            //read skills
             $repository = $doctrine->getRepository(Skill::class);
-            //declare empty array for skill list
-            $skills = [];
+            $skills = $repository->findAll();
 
 
             //seachskill form
@@ -106,7 +105,7 @@ class SkillController extends AbstractController
 
                 $entityManager->flush();
 
-                return $this->redirectToRoute('addskill'); // Redirect to the homepage or any other route   
+                return $this->redirectToRoute('addskill'); // Redirect to the homepage or any other route
             }
         }
     }

@@ -4,6 +4,7 @@ namespace App\Controller\Crud;
 
 use App\Entity\Project;
 use App\Form\ProjectType;
+use App\Form\SearchProjectType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,15 +23,14 @@ class ProjectController extends AbstractController
         if (!$isAuthenticated) {
             return $this->redirectToRoute('home');
         } else {
-            //Create a new project
+            //project form
             $project = new Project();
-            $form = $this->createForm(ProjectType::class, $project);
-            $form->handleRequest($request);
-
-            if ($form->isSubmitted() && $form->isValid()) {
+            $projectForm = $this->createForm(ProjectType::class, $project);
+            $projectForm->handleRequest($request);
+            if ($projectForm->isSubmitted() && $projectForm->isValid()) {
 
                 //upload image
-                $image = $form->get('image')->getData();
+                $image = $projectForm->get('image')->getData();
 
                 if ($image) {
                     $imageName = md5(uniqid()) . '.' . $image->guessExtension();
@@ -47,24 +47,35 @@ class ProjectController extends AbstractController
 
                 # code...
             }
+
             //read projects 
             $repository = $doctrine->getRepository(Project::class);
             $projects = $repository->findAll();
-
-
+            //search project form
+            $searchForm = $this->createForm(SearchProjectType::class);
+            $searchForm->handleRequest($request);
+            if ($searchForm->isSubmitted() && $searchForm->isValid()) {
+                $searchTerm = $searchForm->get('searchTerm')->getData();
+                if (empty($searchTerm)) {
+                    $projects = $repository->findAll();
+                } else {
+                    //get searched projects
+                    $projects = $repository->findBySearchTerm($searchTerm);
+                }
+                # code...
+            }
+            //return template
             return $this->render('crud/Project/addproject.html.twig', [
 
-                "form" => $form->createView(),
+                "projectForm" => $projectForm->createView(),
                 'projects' => $projects,
-
+                'searchForm' => $searchForm->createView()
 
             ]);
         }
     }
 
-
     //delte a project
-
     #[Route("/delete/project/{id}", name: "delete_project")]
 
     public function delete(ManagerRegistry $doctrine, $id, Filesystem $filesystem): Response
@@ -80,8 +91,6 @@ class ProjectController extends AbstractController
 
             $entityManager = $doctrine->getManager();
             $project = $entityManager->getRepository(project::class)->find($id);
-
-
             //check if project exist
             if (!$project) {
                 return $this->redirectToRoute('addproject');
@@ -101,9 +110,6 @@ class ProjectController extends AbstractController
             }
         }
     }
-
-
-
 
     //edit project
     #[Route("/edit/project/{id}", name: "edit_project")]

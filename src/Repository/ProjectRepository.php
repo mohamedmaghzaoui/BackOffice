@@ -21,6 +21,21 @@ class ProjectRepository extends ServiceEntityRepository
         parent::__construct($registry, Project::class);
     }
 
+    public function findBySearchTerm(?string $searchTerm): array
+    {
+        // If $searchTerm is null, return an empty array
+        if ($searchTerm === null) {
+            return [];
+        }
+
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.name LIKE :searchTerm')
+            ->setParameter('searchTerm', '%' . $searchTerm . '%')
+            ->orderBy('s.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return Project[] Returns an array of Project objects
     //     */
