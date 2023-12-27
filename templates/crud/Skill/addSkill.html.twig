@@ -45,28 +45,55 @@
 <div class="text-light offset-xl-3 offset-1 my-5 col-xl-5 col-lg-5 col-sm-8 col-md-9 col-10 ">
     <!--begin skill form-->
     <p class="fs-2">Add a new skill</p>
-    {{form_start(form,{"attr":{"novalidate":"novalidate"}}) }}
+    {{form_start(skillForm,{"attr":{"novalidate":"novalidate"}}) }}
 
     <div class="mb-3 ">
-        {{ form_label(form.name) }}
-        {{ form_widget(form.name, {'attr': {'class': 'name form-control text-light fw-bold border-0', 'style':
+        {{ form_label(skillForm.name) }}
+        {{ form_widget(skillForm.name, {'attr': {'class': 'name form-control text-light fw-bold border-0', 'style':
         'background:
         #1F2937; width:70% ' }}) }}
-        {{form_errors(form.name)}}
+        {{form_errors(skillForm.name)}}
     </div>
 
     <div class="mb-3">
-        {{ form_label(form.mastery) }}
-        {{ form_widget(form.mastery, {'attr': {'class': 'name form-control text-light fw-bold border-0', 'style':
+        {{ form_label(skillForm.mastery) }}
+        {{ form_widget(skillForm.mastery, {'attr': {'class': 'name form-control text-light fw-bold border-0', 'style':
         'background: #1F2937; width:70%' }}) }}
-        {{form_errors(form.mastery)}}
+        {{form_errors(skillForm.mastery)}}
     </div>
 
     <button class="btn btn-outline-warning" type="submit">Add a skill</button>
 
-    {{ form_end(form) }}
+    {{ form_end(skillForm) }}
     <!--end skill form-->
     <br>
+    <!--begin search form-->
+    <div class="mb-3 ">
+        {{ form_start(searchForm) }}
+        <div class="row mx-2">
+            {{ form_widget(searchForm.searchTerm) }}
+
+            <input class="btn btn-warning col-auto mx-1 " type='submit' value='Search'>
+            <div class="offset-6">
+                <span>Sort</span>
+                {{ form_widget(searchForm.sortBy) }}
+
+                {{ form_widget(searchForm.sortOrder) }}
+            </div>
+
+
+
+        </div>
+        {{ form_end(searchForm) }}
+
+
+
+
+
+
+    </div>
+
+
     <!--begin skill list-->
     <table style="background-color: #111827; border-radius: 12px;" class=" fw-medium text-light col-12">
 

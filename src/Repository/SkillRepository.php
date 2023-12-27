@@ -35,3 +35,6 @@ class SkillRepository extends ServiceEntityRepository
             ->getResult();
     }
 }
+
+
+    // ...
