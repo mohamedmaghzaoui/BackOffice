@@ -40,6 +40,13 @@ class Project
     )]
     private ?string $description = null;
 
+    //purpose
+    #[ORM\Column(length: 255)]
+
+    private ?string $purpose = null;
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -77,6 +84,24 @@ class Project
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of purpose
+     */
+    public function getPurpose(): ?string
+    {
+        return $this->purpose;
+    }
+
+    /**
+     * Set the value of purpose
+     */
+    public function setPurpose(?string $purpose): self
+    {
+        $this->purpose = $purpose;
 
         return $this;
     }

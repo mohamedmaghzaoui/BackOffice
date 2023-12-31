@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Project;
 use PhpParser\Node\Scalar\MagicConst\File;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -43,6 +44,18 @@ class ProjectType extends AbstractType
                         ],
                         'mimeTypesMessage' => 'Please upload a valid image (JPEG, JPG, PNG, GIF)',
                     ]),
+                ],
+            ])
+            ->add('purpose', ChoiceType::class, [
+                'required' => false,
+
+
+
+                'choices' => [
+                    'education' => 'education',
+                    'work' => 'work',
+                    'personal' => 'personal'
+                    // Add more choices based on your entity fields
                 ],
             ]);
     }

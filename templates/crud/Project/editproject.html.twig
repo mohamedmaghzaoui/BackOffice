@@ -68,6 +68,12 @@
         'background: #1F2937; width:70%' }}) }}
         {{form_errors(form.image)}}
     </div>
+    <div class="mb-3">
+        {{ form_label(form.purpose) }}
+        {{ form_widget(form.purpose, {'attr': {'class': ' form-control text-light fw-bold border-0', 'style':
+        'background: #1F2937;cursor:pointer; width:40%' }}) }}
+        {{form_errors(form.purpose)}}
+    </div>
 
     <button class="btn btn-outline-warning" type="submit">modify</button>
 
