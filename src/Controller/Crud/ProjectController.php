@@ -56,12 +56,17 @@ class ProjectController extends AbstractController
             $searchForm->handleRequest($request);
             if ($searchForm->isSubmitted() && $searchForm->isValid()) {
                 $searchTerm = $searchForm->get('searchTerm')->getData();
+                $filterTerm = $searchForm->get('filterTerm')->getData();
                 if (empty($searchTerm)) {
                     $projects = $repository->findAll();
                 } else {
                     //get searched projects
                     $projects = $repository->findBySearchTerm($searchTerm);
                 }
+                if (!empty($filterTerm)) {
+                    $projects = $this->filterProjects($projects, $filterTerm);
+                }
+
                 # code...
             }
             //return template
@@ -155,5 +160,18 @@ class ProjectController extends AbstractController
                 "form" => $form->createView()
             ]);
         }
+    }
+    public function filterProjects(array $projects, array $filterTerm): array
+    {
+        $newProjects = [];
+
+        foreach ($projects as $key => $project) {
+            foreach ($filterTerm as $filter) {
+                if ($project->getPurpose() == $filter) {
+                    array_push($newProjects, $project);
+                }
+            }
+        }
+        return $newProjects;
     }
 }
