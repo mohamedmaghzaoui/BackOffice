@@ -47,7 +47,7 @@ class ProjectType extends AbstractType
                 ],
             ])
             ->add('purpose', ChoiceType::class, [
-                'required' => false,
+                'required' => true,
 
 
 

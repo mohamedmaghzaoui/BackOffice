@@ -32,11 +32,7 @@ body {
   img {
     cursor: pointer;
   }
-  .hover:hover {
-    background-color: #ffc107; /* Bootstrap "warning" color */
-  
-    transition: background-color 0.3s, color 0.3s;
-  }
+
   
   @media (max-width: 500px) {
     #text {

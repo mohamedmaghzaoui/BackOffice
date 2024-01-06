@@ -25,12 +25,13 @@ class Skill
     //mastery
 
     #[ORM\Column]
-    #[Assert\NotBlank(message: "mastery cannot be empty")]
+    #[Assert\NotBlank(message: "mastery cannot be empty", allowNull: false)]
     #[Range(
         min: 0,
         max: 100,
         notInRangeMessage: "mastery must be a number between 0 and 100"
     )]
+
 
 
     private ?int $mastery = null;

@@ -22,10 +22,13 @@ class Project
     private ?string $name = null;
     //image
 
-    #[ORM\Column(length: 255)]
-
-
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
+
+
+
+
+
     //description
 
 
@@ -42,6 +45,8 @@ class Project
 
     //purpose
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "purpose cannot be empty")]
+
 
     private ?string $purpose = null;
 
