@@ -131,8 +131,6 @@ class SkillController extends AbstractController
                 $entityManager = $doctrine->getManager();
                 $entityManager->flush();
                 return $this->redirectToRoute('addskill');
-            } else {
-                dump($form->getErrors(true, true));
             }
             //return edit template
             return $this->render('Crud/Skill/editSkill.html.twig', [
